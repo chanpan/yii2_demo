@@ -1,13 +1,13 @@
 <?php
+
 # Virtual Host
+
 use \yii\web\Request;
+
 $baseUrl = str_replace('/frontend/web', '', (new Request)->getBaseUrl());
 
 $params = array_merge(
-    require(__DIR__ . '/../../common/config/params.php'),
-    require(__DIR__ . '/../../common/config/params-local.php'),
-    require(__DIR__ . '/params.php'),
-    require(__DIR__ . '/params-local.php')
+        require(__DIR__ . '/../../common/config/params.php'), require(__DIR__ . '/../../common/config/params-local.php'), require(__DIR__ . '/params.php'), require(__DIR__ . '/params-local.php')
 );
 
 return [
@@ -16,8 +16,17 @@ return [
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
+        //add thtmes 
+        'view' => [
+            'theme' => [
+                'pathMap' => [
+                    '@app/views' => '@frontend/themes/smartshop/views'//beststore , smartshop
+                ],
+            ],
+        ],
         'request' => [
             'csrfParam' => '_csrf-frontend',
+            # Virtual Host
             'baseUrl' => $baseUrl,
         ],
         'user' => [
@@ -32,7 +41,7 @@ return [
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
-                [
+                    [
                     'class' => 'yii\log\FileTarget',
                     'levels' => ['error', 'warning'],
                 ],
@@ -41,18 +50,19 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-         
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                '' => 'site/index',
+                'about' => 'site/about',
+                'contact' => '/site/contact',
                 '<controller:\w+>/<id:\d+>' => '<controller>/view',
                 '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
                 'module/<module:\w+>/<controller:\w+>/<action:\w+>' => '<module>/<controller>/<action>',
             ],
         ],
-         
     ],
     'params' => $params,
 ];

@@ -19,6 +19,7 @@ return [
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-backend',
+            # Virtual Host
             'baseUrl' => $baseUrl,
         ],
         'user' => [
