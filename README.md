@@ -53,3 +53,45 @@ frontend
 vendor/                  contains dependent 3rd-party packages
 environments/            contains environment-based overrides
 ```
+
+
+Install  Project
+
+git clone https://github.com/chanpan/yii2_demo.git
+
+cd yii2_demo
+php init > 0 > enter > y >enter
+composer udpate 
+
+Connection Database 
+common/config/main-local.php
+ 
+'db' => [
+
+            'class' => 'yii\db\Connection',
+
+            'dsn' => 'mysql:host=HostName;dbname=DatabaseName',
+
+            'username' => 'Username',
+
+            'password' => 'Password',
+
+            'charset' => 'utf8',
+
+        ],
+
+Example 
+
+ 'db' => [
+
+            'class' => 'yii\db\Connection',
+
+            'dsn' => 'mysql:host=localhost;dbname=db',
+
+            'username' => 'root',
+
+            'password' => '123456',
+
+            'charset' => 'utf8',
+
+        ],
