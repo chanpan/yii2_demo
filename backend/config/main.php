@@ -48,6 +48,8 @@ return [
             'enablePrettyUrl' => true,   // Disable r= routes
             'enableStrictParsing' => true,
             'rules' => [
+               '' => 'site/index',
+               'login'=>'site/login',
                # Other
                 '<controller:\w+>' => '<controller>/index',
                 '<controller:\w+>/<id:\d+>' => '<controller>/view',
